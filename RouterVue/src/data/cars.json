@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "name": "A",
+    "price": "100",
+    "year": "2010",
+    "contact": {
+      "name": "A",
+      "phone": "1234567890"
+    }
+  },
+  {
+    "id": "2",
+    "name": "B",
+    "price": "200",
+    "year": "2009",
+    "contact": {
+      "name": "B",
+      "phone": "1234567890"
+    }
+  },
+  {
+    "id": "3",
+    "name": "C",
+    "price": "503",
+    "year": "2018",
+    "contact": {
+      "name": "C",
+      "phone": "1234567890"
+    }
+  },
+  {
+    "id": "4",
+    "name": "D",
+    "price": "130",
+    "year": "2013",
+    "contact": {
+      "name": "D",
+      "phone": "1234567890"
+    }
+  }
+]

@@ -20,6 +20,7 @@ const addNote = () => {
     backgroundColor: getRandomColor()
   })
   newNote.value = ""
+  errorMessage.value = ""
   modal.value = false
 }
 
