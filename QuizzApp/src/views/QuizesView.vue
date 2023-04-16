@@ -1,8 +1,9 @@
 <script setup>
 import data from '../data/quizes.json';
 import CardComponent from "@/components/CardComponent.vue";
-import { RouterView } from "vue-router";
-import { ref, watch } from 'vue';
+import {RouterView} from "vue-router";
+import {ref, watch} from 'vue';
+import {gsap} from "gsap";
 
 
 const title = import.meta.env.VITE_APP_TITLE;
@@ -19,6 +20,25 @@ watch(search, (value) => {
   }
 });
 
+const beforeEnter = (el) => {
+  el.style.opacity = 0;
+  el.style.transform = 'translateY(-60px)';
+}
+
+const enter = (el) => {
+  gsap.to(el, {
+    opacity: 1,
+    transform: 'translateY(0)',
+    duration: 0.5,
+    delay: el.dataset.index * 0.3,
+    ease: 'power4.out'
+  })
+}
+
+const afterEnter = (el) => {
+  el.style.transition = '';
+}
+
 </script>
 
 <template>
@@ -28,7 +48,9 @@ watch(search, (value) => {
       <input v-model.trim="search" type="text" placeholder="Search..">
     </header>
     <div class="card__container">
-      <CardComponent v-for="quiz in quizes" :key="quiz.id" :quiz="quiz" />
+      <TransitionGroup appear @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
+        <CardComponent v-for="(quiz, index) in quizes" :key="quiz.id" :quiz="quiz" :data-index="index"/>
+      </TransitionGroup>
     </div>
   </div>
 </template>
